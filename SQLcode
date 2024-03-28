@@ -1,0 +1,29 @@
+CREATE  TABLE Produto (
+  id_produto                INTEGER   PRIMARY KEY   AUTOINCREMENT,
+  nome                      VARCHAR(60 )  NOT NULL,
+  perecivel                 VARCHAR(15)   NOT NULL,
+  preço                     DECIMAL (8,2) NOT NULL,
+  estoque                   INT           NOT NULL,
+  marca                     VARCHAR (60),
+  nacionalidade             VARCHAR (60)
+ 
+  );
+  
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'pasta de dente', 'não perecivel', 10.90, 15, 'Colgate', 'Americana');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'refrigerante', 'não perecivel', 9.90, 10, 'Pepsi', 'Americana');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'Arroz', 'não perecivel', 7.90, 20, 'Camil', 'Brasileira');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'Feijão', 'não perecivel', 8.90, 20, 'Broto Legal', 'Brasileira');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'Sabão em Pó', 'não perecivel', 25.90,12, 'OMO', 'Brasileira');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'Chocolate', 'perecivel', 30.90, 20, 'Linditt', 'Suiça');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'Sorvete', 'perecivel', 32.90, 18, 'Baccio de Latte', 'Italiana');
+  INSERT INTO Produto (id_produto, nome, perecivel, preço, estoque, marca, nacionalidade) VALUES (null, 'Arroz', 'não perecivel', 7.90, 20, 'Camil', 'Brasileira')
+  
+   select * FROM Produto
+   SELECT COUNT (id_produto) AS total_produtos_cadastrados FROM Produto
+   SELECT AVG (preço) AS preco_medio_produtos FROM Produto;
+   SELECT perecivel, AVG (preço) AS preco_medio FROM Produto GROUP BY perecivel;
+   SELECT nome, AVG (preço) AS preco_medio FROM Produto GROUP BY nome;
+   SELECT AVG (preço) AS preco_medio, SUM (estoque) AS total_estoque FROM Produto;
+   SELECT nome, marca, estoque FROM Produto WHERE preço = (SELECT MAX (preço) FROM Produto);
+   SELECT * FROM Produto WHERE preço > (SELECT AVG (preço) FROM Produto);
+   SELECT nacionalidade, COUNT(*) AS quantidade FROM Produto GROUP BY nacionalidade;
